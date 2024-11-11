@@ -8,15 +8,12 @@ s5
 s6
 s7
 s8
-
 #initial
 s0
-
 #accepting
 s4
 s5
 s8
-
 #alphabet
 R
 $
@@ -31,7 +28,6 @@ $
 8
 9
 ,
-
 #transitions
 s0:R>s1
 s1:$>s2
