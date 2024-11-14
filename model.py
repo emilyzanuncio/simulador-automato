@@ -3,24 +3,22 @@ import tkinter as tk
 from tkinter import messagebox
 
 def validaAutomato(automato):
+    # Envia o autômato para tratamento de erro
     valido,mensagem = confereTXT(automato)
-    
+    # Caso seja válido, iniciar simulação. Se não, enviar mensagem de erro.
     if valido:
-        return True
+        simularFA(automato)
     else:
         messagebox.showerror("ERRO", mensagem)
-        return False
 
 def salvarSimular(caixaTexto):
     entrada = caixaTexto.get("1.0", tk.END)
-    
+    # Copia autômato inserido para um arquivo txt
     automato = "./novoAutomato.txt"
     with open(automato,"w") as file:
         file.write(entrada)
-    
-    valido = validaAutomato(automato)
-    if valido:
-        simularFA(automato)
+    # Envia o autômato para o tratamento de erro para depois simular
+    validaAutomato(automato)
     
 def confereTXT(automato):
     secObrigatorias = ["#states","#initial","#accepting","#alphabet","#transitions"]

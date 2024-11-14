@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog, scrolledtext
-from model import simularFA, salvarSimular
+from model import validaAutomato, simularFA, salvarSimular
 
 global mainWindow, impWindow, mdWindow, addWindow
 
@@ -32,13 +32,12 @@ def importar():
 
 def importarTxt():
     global impWindow
-    print("TXT")
     automato = filedialog.askopenfilename(
         filetypes=[("Text Files", "*.txt")])
     
     if automato:
         tk.Label(impWindow,text="Arquivo localizado!").grid(row=3,column=0)
-        tk.Button(impWindow,text="Simular", command=simularFA(automato)).grid(row=4,column=0,pady=10)
+        tk.Button(impWindow,text="Simular", command=validaAutomato(automato)).grid(row=4,column=0,pady=10)
 
 def modelos():
     global mdWindow
@@ -50,10 +49,12 @@ def modelos():
     
     realFA = "./modelosFA/reconheceReal.txt"
     thompsonAFD = "./modelosFA/thompsonAFD.txt"
+    erro = "./modelosFA/erro.txt"
     
-    tk.Button(mdWindow, text="Real", command=lambda: simularFA(realFA)).grid(row=2,column=0,padx=20,pady=5)
-    tk.Button(mdWindow, text="(a+b)*a - AFD", command=lambda: simularFA(thompsonAFD)).grid(row=3,column=0,padx=20,pady=5)
-    #tk.Button(impWindow, text="(a+b)*a - AFN", command=simularFA).grid(row=4,column=0,padx=20,pady=5)
+    tk.Button(mdWindow, text="Real", command=lambda: validaAutomato(realFA)).grid(row=2,column=0,padx=20,pady=5)
+    tk.Button(mdWindow, text="(a+b)*a - AFD", command=lambda: validaAutomato(thompsonAFD)).grid(row=3,column=0,padx=20,pady=5)
+    tk.Button(mdWindow, text="exemplo de erro", command=lambda: validaAutomato(erro)).grid(row=4,column=0,padx=20,pady=5)
+    #tk.Button(impWindow, text="(a+b)*a - AFN", command=validaAutomato).grid(row=4,column=0,padx=20,pady=5)
     
     mdWindow.mainloop()
 
