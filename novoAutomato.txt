@@ -1,10 +1,15 @@
 #states
 s0
+s1
 #initial
 s0
 #accepting
-s0
+s1
 #alphabet
 a
+b
 #transitions
-s0:a>s0
+s0:a>s1
+s0:b>s0
+s1:a>s1
+s1:b>s0

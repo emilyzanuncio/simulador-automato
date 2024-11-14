@@ -2,12 +2,14 @@ import re
 import tkinter as tk
 from tkinter import messagebox
 
-def simularFA(automato):
-    f = open(automato,"r")
-    print(f.read())
-
-def mostrarFA(automato):
-    print("Mostrandoooo")
+def validaAutomato(automato):
+    valido,mensagem = confereTXT(automato)
+    
+    if valido:
+        return True
+    else:
+        messagebox.showerror("ERRO", mensagem)
+        return False
 
 def salvarSimular(caixaTexto):
     entrada = caixaTexto.get("1.0", tk.END)
@@ -15,16 +17,10 @@ def salvarSimular(caixaTexto):
     automato = "./novoAutomato.txt"
     with open(automato,"w") as file:
         file.write(entrada)
-        
-    validar,mensagem = confereTXT(automato)
-    #print(validar)
-    if validar:
-        # =========================
-        #TROCAR PRA SIMULAR
-        # =========================
-        messagebox.showinfo("SUCESSO", mensagem)
-    else:
-        messagebox.showerror("ERRO", mensagem)
+    
+    valido = validaAutomato(automato)
+    if valido:
+        simularFA(automato)
     
 def confereTXT(automato):
     secObrigatorias = ["#states","#initial","#accepting","#alphabet","#transitions"]
@@ -102,3 +98,13 @@ def confereTXT(automato):
             return False, erro
     sucesso = "Autômato aceito."
     return True, sucesso
+
+def simularFA(automato):
+    #f = open(automato,"r")
+    #print(f.read())
+    #================================
+    print("Simulando!")
+    #================================
+
+def mostrarFA(automato):
+    print("Mostrando visualmente")
