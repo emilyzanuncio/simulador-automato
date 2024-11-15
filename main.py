@@ -68,7 +68,7 @@ def inserir():
     
     tk.Label(addWindow,text="Utilize o formato:\n#states\ns0\ns1\n#initial\ns0\n#accepting\ns1\n#alphabet\na\nb\n#transitions\ns0:a>s0\ns0:b>s0,s1",
              font=('Arial',12)).grid(row=1,column=0,pady=5)
-    tk.Label(addWindow, text="Delete linhas vazias.\nUse $ para transições vazias.", font=('Arial',12)).grid(row=2,column=0,padx=20,pady=20)
+    tk.Label(addWindow, text="Delete linhas vazias.\nUse # para transições vazias.", font=('Arial',12)).grid(row=2,column=0,padx=20,pady=20)
     
     caixaTexto = scrolledtext.ScrolledText(addWindow, wrap=tk.WORD, width=40, height=8)
     caixaTexto.grid(row=3,column=0,padx=10,pady=10)

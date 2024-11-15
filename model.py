@@ -25,7 +25,7 @@ def confereTXT(automato):
     global secoes 
     secoes = {}
     # Define o modelo das transições estadoA:simbolo>estadoB
-    transicaoModelo = re.compile(r"\w+:(\w+|\$|\,)>\w+(,\w+)*$")
+    transicaoModelo = re.compile(r"\w+:(\w+|\#|\,)>\w+(,\w+)*$")
     
     # Ler os conteúdos do arquivo e organizar as seções
     with open(automato,"r") as file:
@@ -95,7 +95,7 @@ def confereTXT(automato):
                 return False, erro
         
         # Verifica se o símbolo da transição está no alfabeto definido (permite transição vazia)
-        if simbolo not in alfabetoDefinido and simbolo != '$':
+        if simbolo not in alfabetoDefinido and simbolo != '#':
             erro = f"O símbolo '{simbolo}' não é parte do alfabeto definido."
             return False, erro
     sucesso = "Autômato aceito."
@@ -171,7 +171,7 @@ def simularAutomato(palavra):
                     transicaoExecutada = f"{simboloTransicao}>{destino}"
                     buscar(destino, posicao + 1, caminhoAtual + [transicaoExecutada])
             # Caso o estado atual possua transições em vazio
-            elif origem == estadoAtual and simboloTransicao == "$":
+            elif origem == estadoAtual and simboloTransicao == "#":
                 for destino in destinos:
                     transicaoExecutada = f"{simboloTransicao}>{destino}"
                     buscar(destino, posicao, caminhoAtual + [transicaoExecutada])
