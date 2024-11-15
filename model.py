@@ -25,7 +25,7 @@ def confereTXT(automato):
     global secoes 
     secoes = {}
     # Define o modelo das transições estadoA:simbolo>estadoB
-    transicaoModelo = re.compile(r"\w+:(\w+|\#|\,)>\w+(,\w+)*$")
+    transicaoModelo = re.compile(r"\w+:(\w+|\#|\,|\$)>\w+(,\w+)*$")
     
     # Ler os conteúdos do arquivo e organizar as seções
     with open(automato,"r") as file:
