@@ -13,6 +13,7 @@ s0
 #accepting
 s4
 s5
+s7
 s8
 #alphabet
 R
